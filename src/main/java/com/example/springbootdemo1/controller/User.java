@@ -1,6 +1,8 @@
 package com.example.springbootdemo1.controller;
 
-public class User {
+import org.springframework.hateoas.ResourceSupport;
+
+public class User  extends ResourceSupport{
 
     private String name;
 
