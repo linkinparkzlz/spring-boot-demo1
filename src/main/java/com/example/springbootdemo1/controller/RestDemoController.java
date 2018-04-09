@@ -1,5 +1,6 @@
 package com.example.springbootdemo1.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,12 +31,18 @@ public class RestDemoController {
     }
 
 
-
     //携带参数  http://localhost:8080/html/demo/param?param=aaa
     @GetMapping(path = "/html/demo/param")
     public String htmlParam(@RequestParam String param) {
 
         return "<html><body>Request  Paramter   value  : " + param + "</body></html>";
+    }
+
+    //使用 ReponseEntity
+    @GetMapping(path = "/html/demo/response/entity")
+    public ResponseEntity<String> htmlResponseEnity() {
+
+        return ResponseEntity.ok("<html><body>Reponse   Entity</body></html>");
     }
 
 
