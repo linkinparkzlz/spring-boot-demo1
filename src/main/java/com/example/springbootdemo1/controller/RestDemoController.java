@@ -1,8 +1,12 @@
 package com.example.springbootdemo1.controller;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
 
 //@Controller
 @RestController
@@ -42,7 +46,13 @@ public class RestDemoController {
     @GetMapping(path = "/html/demo/response/entity")
     public ResponseEntity<String> htmlResponseEnity() {
 
-        return ResponseEntity.ok("<html><body>Reponse   Entity</body></html>");
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.put("MyHeader", Arrays.asList("MyHeaderalue"));
+
+        ResponseEntity responseEntity = new ResponseEntity("<html><body>Reponse   Entity</body></html>", httpHeaders, HttpStatus.OK);
+
+        return responseEntity;
     }
 
 
